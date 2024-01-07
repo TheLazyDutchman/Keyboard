@@ -1,0 +1,167 @@
+points:
+  zones:
+    matrix:
+      anchor:
+        shift: [100, -100]
+      columns:
+       pinky:
+        key:
+          col_net: P15
+        rows:
+          bottom:
+          home:
+            bind: [0,0,0,0]
+          top:
+       ring:
+        key:
+          spread: U+2
+          splay: -10
+          stagger: 17
+          col_net: P18
+        rows:
+          bottom:
+          home:
+            bind: [0,0,0,0]
+          top:
+       middle:
+        key:
+          splay: -4
+          spread: U+1
+          stagger: 6
+          col_net: P19
+        rows:
+          bottom:
+            bind: [0,3,10,3]
+          home:
+          top:
+       index:
+        key:
+          splay: -4
+          spread: U+1
+          stagger: -5
+          col_net: P20
+        rows:
+          bottom:
+            bind: [0,0,10,0]
+          home:
+          top:
+       outer:
+        key:
+          spread: U
+          stagger: -2
+          col_net: P21
+        rows:
+          bottom:
+            bind: [0,19,18,0]
+          home:
+            bind: [0,27,0,0]
+          top:
+      rows:
+        bottom:
+          padding: U
+          row_net: P10
+        home:
+          padding: U
+          row_net: P16
+        top:
+          row_net: P14
+    thumb:
+      anchor:
+        ref: matrix_outer_bottom
+        shift:
+         - -10
+         - -(u+3)
+        rotate: -17
+      columns:
+        tuck:
+          key:
+            bind: [0,1,0,50]
+            col_net: P10
+        home:
+          key:
+            splay: -5
+            spread: U+1
+            stagger: -1
+            bind: [0,1,0,3]
+            col_net: P16
+        reach:
+          key:
+            splay: -5
+            spread: U+1
+            stagger: -1
+            bind: [0,0,0,25]
+            col_net: P14
+      rows:
+        row:
+          row_net: P9
+        
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      bound: true
+      size: U
+      asym: left
+      corner: 2
+  fillet:
+    - what: outline
+      name: raw
+      fillet: 2
+pcbs:
+  ferry:
+    outlines:
+      main:
+        outline: fillet
+    footprints:
+      mx:
+        what: mx
+        where: "/^matrix_.*/"
+        params:
+          from: "{{colrow}}"
+          to: "{{col_net}}"
+          keycaps: true
+          reverse: true
+      diode:
+        what: diode
+        where: "/^matrix_.*/"
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+      mx_thumb:
+        what: mx
+        where: "/^thumb.*/"
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          keycaps: true
+          reverse: true
+      diode_thumb:
+        what: diode
+        where: "/^thumb.*/"
+        params:
+          from: "{{colrow}}"
+          to: "{{col_net}}"
+        adjust:
+          shift: [0, -5]
+      promicro:
+        what: promicro
+        params:
+          orientation: down
+        where:
+          ref: matrix_outer_home
+          shift: [19, -8.5]
+          rotate: -90
+      trrs:
+        what: trrs
+        where:
+          ref: matrix_outer_home
+          shift: [34.75, 6.5]
+        params:
+          A: GND
+          B: GND
+          C: P2
+          D: VCC
+          reverse: true
+          symmetric: true
