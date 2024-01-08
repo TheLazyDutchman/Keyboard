@@ -6,18 +6,19 @@ points:
       columns:
        pinky:
         key:
-          col_net: P15
+          col_net: P18
+          splay: 15
         rows:
           bottom:
+            bind: [5, 40, 0, 0]
           home:
-            bind: [0,0,0,0]
           top:
        ring:
         key:
-          spread: U+2
+          spread: u+2
           splay: -10
           stagger: 17
-          col_net: P18
+          col_net: P15
         rows:
           bottom:
           home:
@@ -25,72 +26,72 @@ points:
           top:
        middle:
         key:
-          splay: -4
-          spread: U+1
+          splay: -5
+          spread: u+1
           stagger: 6
-          col_net: P19
+          col_net: P14
         rows:
           bottom:
-            bind: [0,3,10,3]
+            -bind: [0,3,10,3]
           home:
           top:
        index:
         key:
-          splay: -4
-          spread: U+1
+          splay: -5
+          spread: u+1
           stagger: -5
-          col_net: P20
+          col_net: P16
         rows:
           bottom:
-            bind: [0,0,10,0]
+            -bind: [0,0,10,0]
           home:
           top:
-       outer:
+       inner:
         key:
-          spread: U
+          spread: u
           stagger: -2
-          col_net: P21
+          col_net: P10
         rows:
           bottom:
-            bind: [0,19,18,0]
+            bind: [0,19,12,0]
           home:
             bind: [0,27,0,0]
           top:
       rows:
         bottom:
-          padding: U
-          row_net: P10
+          padding: u
+          row_net: P19
         home:
-          padding: U
-          row_net: P16
+          padding: u
+          row_net: P20
         top:
-          row_net: P14
+          row_net: P21
     thumb:
       anchor:
-        ref: matrix_outer_bottom
+        ref: matrix_inner_bottom
         shift:
-         - -10
+         - 0
          - -(u+3)
-        rotate: -17
+        rotate: -15
       columns:
         tuck:
           key:
-            bind: [0,1,0,50]
-            col_net: P10
+            bind: [5,1,0,30]
+            col_net: P19
         home:
           key:
             splay: -5
-            spread: U+1
+            spread: u+1
             stagger: -1
             bind: [0,1,0,3]
-            col_net: P16
+            col_net: P20
         reach:
           key:
             splay: -5
-            spread: U+1
+            spread: u+1
             stagger: -1
-            bind: [0,0,0,25]
-            col_net: P14
+            bind: [1,0,0,15]
+            col_net: P21
       rows:
         row:
           row_net: P9
@@ -100,7 +101,7 @@ outlines:
     - what: rectangle
       where: true
       bound: true
-      size: U
+      size: u
       asym: left
       corner: 2
   fillet:
@@ -150,13 +151,13 @@ pcbs:
         params:
           orientation: down
         where:
-          ref: matrix_outer_home
+          ref: matrix_inner_home
           shift: [19, -8.5]
           rotate: -90
       trrs:
         what: trrs
         where:
-          ref: matrix_outer_home
+          ref: matrix_inner_home
           shift: [34.75, 6.5]
         params:
           A: GND
@@ -170,19 +171,19 @@ pcbs:
         what: mountinghole
         where:
           ref: matrix_pinky_top
-          shift: [0.6U, 0]
+          shift: [0.6u, 0]
       mount_bottom_left:
         what: mountinghole
         where:
           ref: matrix_pinky_bottom
-          shift: [0.5U, 0.6U]
+          shift: [0.7u, 0.2u]
       mount_top_right:
         what: mountinghole
         where:
-          ref: matrix_outer_top
-          shift: [-0.5U, -0.3U]
+          ref: matrix_inner_top
+          shift: [-0.5u, -0.3u]
       mount_bottom_right:
         what: mountinghole
         where:
           ref: thumb_reach_row
-          shift: [-0.5U, 0.3U]
+          shift: [-0.5u, 0.3u]
